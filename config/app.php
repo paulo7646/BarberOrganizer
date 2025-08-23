@@ -78,11 +78,10 @@ return [
     |
     */
 
-    'locale' => env('APP_LOCALE', 'en'),
-
-    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
-
-    'faker_locale' => env('APP_FAKER_LOCALE', 'en_US'),
+    'locale' => 'pt_BR',          // idioma padrão da aplicação
+    'fallback_locale' => 'en',     // fallback se não houver tradução
+    'faker_locale' => 'pt_BR',     // opcional, gera dados fake em PT-BR
+    'timezone' => 'America/Sao_Paulo', // opcional, acerta timezone
 
     /*
     |--------------------------------------------------------------------------
@@ -101,7 +100,7 @@ return [
 
     'previous_keys' => [
         ...array_filter(
-            explode(',', env('APP_PREVIOUS_KEYS', ''))
+            explode(',', (string) env('APP_PREVIOUS_KEYS', ''))
         ),
     ],
 
