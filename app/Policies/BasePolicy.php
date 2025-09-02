@@ -6,40 +6,55 @@ use App\Models\User;
 
 abstract class BasePolicy
 {
-    protected string $modelName;
-
-    public function __construct(string $modelClass)
-    {
-        $this->modelName = strtolower(class_basename($modelClass));
-    }
+    protected string $modelClass;
 
     protected function allowAll(User $user): bool
     {
-        return  $user->hasRole('Admin');
+        return $user->hasRole('Admin');
     }
 
-    public function viewAny(User $user): bool
+    /**
+     * Retorna o nome do model em minúsculo.
+     * Se passar instância, usa a instância; se não, usa a property da policy
+     */
+    protected function getModelName($model = null): string
     {
-        return $this->allowAll($user) || $user->can("visualizar {$this->modelName}");
+        if ($model) {
+            return strtolower(class_basename($model));
+        }
+
+        return isset($this->modelClass) ? strtolower(class_basename($this->modelClass)) : 'modelo';
     }
 
-    public function view(User $user): bool
+    public function viewAny(User $user, $model = null): bool
     {
-        return $this->allowAll($user) || $user->can("view {$this->modelName}") || $this->viewAny($user)  ;
+        $modelName = $this->getModelName($model);
+        return $this->allowAll($user) || $user->can("visualizar {$modelName}");
     }
 
-    public function create(User $user): bool
+    public function view(User $user, $model): bool
     {
-        return $this->allowAll($user) || $user->can("cadastrar {$this->modelName}");
+        $modelName = $this->getModelName($model);
+        return $this->allowAll($user) 
+            || $user->can("visualizar {$modelName}") 
+            || $this->viewAny($user, $model);
     }
 
-    public function update(User $user): bool
+    public function create(User $user, $model = null): bool
     {
-        return $this->allowAll($user) || $user->can("atualizar {$this->modelName}");
+        $modelName = $this->getModelName($model);
+        return $this->allowAll($user) || $user->can("cadastrar {$modelName}");
     }
 
-    public function delete(User $user): bool
+    public function update(User $user, $model): bool
     {
-        return $this->allowAll($user) || $user->can("deletar {$this->modelName}");
+        $modelName = $this->getModelName($model);
+        return $this->allowAll($user) || $user->can("atualizar {$modelName}");
+    }
+
+    public function delete(User $user, $model): bool
+    {
+        $modelName = $this->getModelName($model);
+        return $this->allowAll($user) || $user->can("deletar {$modelName}");
     }
 }

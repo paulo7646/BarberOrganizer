@@ -2,16 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Spatie\Permission\Models\Role;
-use App\Models\User;
-use Illuminate\Auth\Access\Response;
+use PhpParser\Node\Stmt\Return_;
+use Spatie\Permission\Models\Role;
 
-class RolePolicy  extends BasePolicy
-{
+class RolePolicy extends BasePolicy  {
 
-    public function __construct()
-    {
-        parent::__construct(\App\Models\User::class);
-    }
-   
+ protected string $modelClass = Role::class;
+
 }
