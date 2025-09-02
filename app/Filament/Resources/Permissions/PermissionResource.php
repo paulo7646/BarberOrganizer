@@ -8,19 +8,26 @@ use App\Filament\Resources\Permissions\Pages\ListPermissions;
 use App\Filament\Resources\Permissions\Schemas\PermissionForm;
 use App\Filament\Resources\Permissions\Tables\PermissionsTable;
 use Spatie\Permission\Models\Permission;
-use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use BackedEnum;
+use UnitEnum;
 
 class PermissionResource extends Resource
 {
     protected static ?string $model = Permission::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
-
     protected static ?string $recordTitleAttribute = 'Permission';
+
+    // Ícone do menu
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-users';
+
+    // Nome do grupo que vai aparecer no menu (tipo compatível com a base)
+    protected static UnitEnum|string|null $navigationGroup = 'Dev';
+
+    protected static ?string $navigationLabel = 'Permisões de Usuario';
+
 
     public static function form(Schema $schema): Schema
     {

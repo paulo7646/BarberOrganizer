@@ -4,11 +4,12 @@ namespace App\Filament\Resources\Roles\Schemas;
 
 use Filament\Forms\Components\CheckboxList;
 use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Schema;
 use Spatie\Permission\Models\Permission;
 
 class RoleForm
 {
-    public static function configure($schema)
+    public static function configure(Schema $schema): Schema
     {
         // Agrupa as permissões por modelo
         $permissionsGrouped = Permission::all()->groupBy(function ($permission) {
@@ -22,7 +23,7 @@ class RoleForm
             // Pega apenas a ação da permissão
             $options = $perms->mapWithKeys(function ($permission) {
                 $action = explode(' ', $permission->name)[0]; // "view", "create", etc.
-                return [$permission->id => ucfirst($action)];
+                return [$permission->name => ucfirst($action)]; // chave = nome completo
             });
 
             $fields[] = CheckboxList::make('permissions')

@@ -11,7 +11,6 @@ use Spatie\Permission\Models\Role;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use UnitEnum;
 
@@ -26,9 +25,10 @@ class RoleResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-users';
 
     // Nome do grupo que vai aparecer no menu (tipo compatível com a base)
-    protected static UnitEnum|string|null $navigationGroup = 'Gestão de Usuários';
+    protected static UnitEnum|string|null $navigationGroup = 'Dev';
 
     protected static ?string $navigationLabel = 'Tipo de Usuario';
+    
 
     public static function form(Schema $schema): Schema
     {
