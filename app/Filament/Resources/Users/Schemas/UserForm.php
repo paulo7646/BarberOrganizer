@@ -28,7 +28,11 @@ class UserForm
                     ->hidden(fn($record) => $record !== null),
                 Select::make('roles')
                     ->label('Perfis')
-                    ->relationship('roles', 'name')->preload(),
+                    ->relationship('roles', 'name')
+                    ->preload()
+                    ->visible(fn() => auth()->user()->hasRole('Admin') || auth()->user()->hasRole('Gerente'))
+                    ->default(2)
+                    ,
             ]);
     }
 }

@@ -15,10 +15,8 @@ class RolesTable
     {
         return $table
             ->columns([
-            TextColumn::make('id')->sortable(),
             TextColumn::make('name')->sortable()->searchable(),
             TextColumn::make('permissions_count')->label('Qtd Permissões')->counts('permissions'),
-            TextColumn::make('created_at')->dateTime(),
             ])
             ->filters([
                 //
