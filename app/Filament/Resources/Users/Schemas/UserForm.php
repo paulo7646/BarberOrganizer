@@ -4,6 +4,8 @@ namespace App\Filament\Resources\Users\Schemas;
 
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\CheckboxList;
+use Filament\Forms\Components\Select;
 use Filament\Schemas\Schema;
 
 class UserForm
@@ -15,21 +17,18 @@ class UserForm
                 TextInput::make('name')
                     ->required(),
                 TextInput::make('email')
-                    ->label('Email address')
+                    ->label('Email')
                     ->email()
                     ->required(),
-                DateTimePicker::make('email_verified_at'),
                 TextInput::make('password')
+                    ->label('Senha')
                     ->password()
-                    ->required(),
-                TextInput::make('tipo_user_id')
-                    ->required()
-                    ->numeric()
-                    ->default(2),
-                TextInput::make('status_id')
-                    ->required()
-                    ->numeric()
-                    ->default(1),
+                    ->required(fn($record) => $record === null)
+                    ->dehydrateStateUsing(fn($state) => $state ? bcrypt($state) : null)
+                    ->hidden(fn($record) => $record !== null),
+                Select::make('roles')
+                    ->label('Perfis')
+                    ->relationship('roles', 'name')->preload(),
             ]);
     }
 }
