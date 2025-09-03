@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "534a3d0241dc4ab4a9592a2a3557aab2",
+    "content-hash": "ce19c448bc7ca3b851ea3d04e664f816",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -5164,6 +5164,79 @@
                 }
             ],
             "time": "2022-12-17T21:53:22+00:00"
+        },
+        {
+            "name": "solution-forest/tab-layout-plugin",
+            "version": "3.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/solutionforest/filament-tab-plugin.git",
+                "reference": "86458f0931ebea7c61af51df13a0ecd49cc6c594"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/solutionforest/filament-tab-plugin/zipball/86458f0931ebea7c61af51df13a0ecd49cc6c594",
+                "reference": "86458f0931ebea7c61af51df13a0ecd49cc6c594",
+                "shasum": ""
+            },
+            "require": {
+                "filament/schemas": "^4.0",
+                "filament/support": "^4.0",
+                "filament/widgets": "^4.0",
+                "php": "^8.0",
+                "spatie/laravel-package-tools": "^1.15.0"
+            },
+            "require-dev": {
+                "larastan/larastan": "^3.0",
+                "laravel/pint": "^1.0",
+                "nunomaduro/collision": "^8.0",
+                "orchestra/testbench": "^9.0|^10.0",
+                "pestphp/pest": "^3.0",
+                "pestphp/pest-plugin-arch": "^3.0",
+                "pestphp/pest-plugin-laravel": "^3.0",
+                "pestphp/pest-plugin-livewire": "^3.0",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^2.0",
+                "phpstan/phpstan-phpunit": "^2.0",
+                "rector/rector": "^2.0",
+                "spatie/laravel-ray": "^1.26"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "SolutionForest\\TabLayoutPlugin\\TabLayoutPluginServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SolutionForest\\TabLayoutPlugin\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Carly",
+                    "email": "info@solutionforest.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This plugin provides a flexible tab layout system for Filament Admin panels, enabling you to organize content into clean, navigable tabbed interfaces. ",
+            "homepage": "https://github.com/solution-forest/tab-layout-plugin",
+            "keywords": [
+                "Solution Forest",
+                "laravel",
+                "tab-layout-plugin"
+            ],
+            "support": {
+                "issues": "https://github.com/solution-forest/tab-layout-plugin/issues",
+                "source": "https://github.com/solution-forest/tab-layout-plugin"
+            },
+            "time": "2025-08-13T02:41:21+00:00"
         },
         {
             "name": "spatie/invade",

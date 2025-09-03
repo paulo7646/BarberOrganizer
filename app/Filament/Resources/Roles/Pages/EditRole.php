@@ -6,6 +6,11 @@ use App\Filament\Resources\Roles\RoleResource;
 use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 
+use SolutionForest\TabLayoutPlugin\Schemas\SimpleTabSchema;
+use SolutionForest\TabLayoutPlugin\Widgets\TabsWidget;
+
+
+
 class EditRole extends EditRecord
 {
     protected static string $resource = RoleResource::class;

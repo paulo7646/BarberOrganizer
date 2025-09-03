@@ -12,30 +12,20 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Register any application services.
      */
-    public function register(): void {
-
-
-
-    }
+    public function register(): void {}
 
     /**
      * Bootstrap any application services.
      */
     public function boot(): void
     {
-
-
         LanguageSwitch::configureUsing(function (LanguageSwitch $switch) {
-        $switch
-            ->locales(['pt_BR','en','fr'])
-            ->flags([
-                'PT_BR' => asset('/images/svg/br.svg'),
-                'en' => asset('/images/svg/usa.svg'),
-            ]);
+            $switch
+                ->locales(['pt_BR', 'en', 'fr'])
+                ->flags([
+                    'pt_BR' => asset('/public/Images/svg/br.svg'),
+                    'en' => asset('/public/Images/svg/usa.svg'),
+                ]);
         });
-
-
-
-
     }
 }

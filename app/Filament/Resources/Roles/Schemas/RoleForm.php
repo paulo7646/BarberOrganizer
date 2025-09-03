@@ -2,43 +2,48 @@
 
 namespace App\Filament\Resources\Roles\Schemas;
 
-use Filament\Forms\Components\CheckboxList;
-use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
+use Filament\Schemas\Components\Section;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\CheckboxList;
 use Spatie\Permission\Models\Permission;
 
 class RoleForm
 {
     public static function configure(Schema $schema): Schema
     {
-        // Agrupa as permissões por modelo
-        $permissionsGrouped = Permission::all()->groupBy(function ($permission) {
-            $parts = explode(' ', $permission->name);
-            return $parts[1] ?? 'outros';
-        });
+        // Agrupando permissões por modelo
+        $permissionsGrouped = Permission::all()->groupBy(fn ($permission) => explode(' ', $permission->name)[1] ?? 'outros');
 
-        $fields = [];
+        $sections = [];
 
-        foreach ($permissionsGrouped as $modelName => $perms) {
-            // Pega apenas a ação da permissão
-            $options = $perms->mapWithKeys(function ($permission) {
-                $action = explode(' ', $permission->name)[0]; // "view", "create", etc.
-                return [$permission->name => ucfirst($action)]; // chave = nome completo
-            });
+        // Seção com o campo 'name'
+        $sections[] = Section::make('Informações da Role')
+            ->description('Defina o nome da role')
+            ->schema([
+                TextInput::make('name')
+                    ->label('Nome')
+                    ->required()
+                    ->unique(ignoreRecord: true),
+            ])->columnSpanFull();
 
-            $fields[] = CheckboxList::make('permissions')
-                ->label(ucfirst($modelName))
-                ->options($options->toArray())
-                ->columns(5)
-                ->columnSpanFull();
+        // Seções agrupadas por modelo com CheckboxList de permissões
+        foreach ($permissionsGrouped as $model => $perms) {
+            $options = $perms->mapWithKeys(fn ($permission) => [
+                $permission->name => ucfirst(explode(' ', $permission->name)[0]),
+            ])->toArray();
+
+            $sections[] = Section::make(ucfirst($model))
+                ->schema([
+                    CheckboxList::make('permissions')
+                        ->label('Ações')
+                        ->options($options)
+                        ->columns(5),
+                ])
+                ->collapsible()
+                ->collapsed();
         }
 
-        return $schema->components(array_merge([
-            TextInput::make('name')
-                ->label('Nome')
-                ->required()
-                ->unique(ignoreRecord: true)
-                ->columnSpanFull(),
-        ], $fields));
+        return $schema->components(array_merge([], $sections));
     }
 }
