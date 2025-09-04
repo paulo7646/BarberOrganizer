@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "085143dcdfe8f4d9efe7b94cc0e0d7cf",
+    "content-hash": "81b9a2ac3d321cc88d8aafa4fe441d07",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -3370,6 +3370,79 @@
                 }
             ],
             "time": "2025-07-17T05:12:15+00:00"
+        },
+        {
+            "name": "martinpetricko/filament-restore-or-create",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MartinPetricko/filament-restore-or-create.git",
+                "reference": "4c98c2f2a24ef515dc8d5450c8c5ff1ef8ed8fed"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MartinPetricko/filament-restore-or-create/zipball/4c98c2f2a24ef515dc8d5450c8c5ff1ef8ed8fed",
+                "reference": "4c98c2f2a24ef515dc8d5450c8c5ff1ef8ed8fed",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^4.0",
+                "php": "^8.2",
+                "spatie/laravel-package-tools": "^1.15"
+            },
+            "require-dev": {
+                "larastan/larastan": "^3.1",
+                "laravel/pint": "^1.0",
+                "nunomaduro/collision": "^8.6",
+                "orchestra/testbench": "^10.0",
+                "pestphp/pest": "^3.7",
+                "pestphp/pest-plugin-arch": "^3.0",
+                "pestphp/pest-plugin-laravel": "^3.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "MartinPetricko\\FilamentRestoreOrCreate\\FilamentRestoreOrCreateServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MartinPetricko\\FilamentRestoreOrCreate\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Martin Petricko",
+                    "email": "matopetricko@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "FilamentPHP package that adds ability to check for similar deleted records and restore them instead of creating new ones.",
+            "homepage": "https://github.com/martinpetricko/filament-restore-or-create",
+            "keywords": [
+                "MartinPetricko",
+                "create",
+                "filament",
+                "laravel",
+                "restore"
+            ],
+            "support": {
+                "issues": "https://github.com/martinpetricko/filament-restore-or-create/issues",
+                "source": "https://github.com/martinpetricko/filament-restore-or-create"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/MartinPetricko",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-06-19T09:23:33+00:00"
         },
         {
             "name": "masterminds/html5",
