@@ -13,6 +13,7 @@
         "asmit/resized-column": "^1.1",
         "bezhansalleh/filament-language-switch": "^4.0",
         "filament/filament": "4.0",
+        "guava/calendar": "^2.0",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
         "martinpetricko/filament-restore-or-create": "^2.0",
