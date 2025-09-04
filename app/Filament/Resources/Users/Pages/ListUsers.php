@@ -8,9 +8,11 @@ use Filament\Resources\Pages\ListRecords;
 
 use SolutionForest\TabLayoutPlugin\Schemas\SimpleTabSchema;
 use SolutionForest\TabLayoutPlugin\Widgets\TabsWidget;
+use Asmit\ResizedColumn\HasResizableColumn;
 
 class ListUsers extends ListRecords
 {
+    use HasResizableColumn;
     protected static string $resource = UserResource::class;
 
     protected function getHeaderActions(): array

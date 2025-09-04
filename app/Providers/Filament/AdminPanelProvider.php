@@ -19,6 +19,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use SolutionForest\TabLayoutPlugin\Widgets\TabsWidget;
+use Asmit\ResizedColumn\ResizedColumnPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -56,6 +57,10 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+            ])
+            ->plugins([
+                ResizedColumnPlugin::make()
+                    ->preserveOnDB()
             ]);
     }
 }
